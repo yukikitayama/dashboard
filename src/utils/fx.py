@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 
-from .constants import API_URL, API_KEY, INSTRUMENT, ALIGNMENT_TIMEZONE
+from .constants import API_URL, API_KEY, INSTRUMENT, ALIGNMENT_TIMEZONE, SMA_WINDOWS
 
 
 def make_headers():
@@ -54,7 +54,15 @@ def convert_candle_to_df(candles):
     # pprint.pprint(data)
 
     df = pd.DataFrame(data)
-    df = clean_df(df)
+
+    # Index
+    df["time"] = pd.to_datetime(df["time"])
+    df.set_index("time", inplace=True)
+    df.sort_index(inplace=True)
+
+    # Prices
+    for c in ["open", "high", "low", "close"]:
+        df[c] = pd.to_numeric(df[c])
 
     # print("convert_candle_to_df()")
     # print(df.shape)
@@ -66,10 +74,8 @@ def convert_candle_to_df(candles):
     return df
 
 
-def clean_df(df):
-    df_c = df.copy()
-    df_c["time"] = pd.to_datetime(df_c["time"])
-    for c in ["open", "high", "low", "close"]:
-        df_c[c] = pd.to_numeric(df_c[c])
-    return df_c
+def get_indicators(df):
+    for window in SMA_WINDOWS:
+        df[f"sma_{window}"] = df["close"].rolling(window).mean()
+    return df
 

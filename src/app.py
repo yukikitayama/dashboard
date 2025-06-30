@@ -1,24 +1,16 @@
-import plotly.graph_objs as go
+from dash import Dash, html
 
-from utils import fx
+from components.chart import chart
 
-candles = fx.get_candles()
-df = fx.convert_candle_to_df(candles)
+app = Dash()
 
-print(df.shape)
-print(df.head())
-print(df.tail())
-
-fig = go.Figure(
-    data=[
-        go.Candlestick(
-            x=df["time"],
-            open=df["open"],
-            high=df["high"],
-            low=df["low"],
-            close=df["close"]
-        )
+app.layout = html.Div(
+    [
+        html.H1("Yuki Kitayama"),
+        chart
     ]
 )
 
-fig.show()
+
+if __name__ == "__main__":
+    app.run()
