@@ -12,4 +12,4 @@ COPY src .
 
 # CMD ["python", "app.py"]
 
-CMD ["python", "src/app.py"]
+CMD ["python", "./src/app.py"]
