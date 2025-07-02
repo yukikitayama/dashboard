@@ -1,13 +1,10 @@
 from dash import Dash, html
 
-from components.chart import chart
-
 app = Dash()
 
 app.layout = html.Div(
     [
-        html.H1("Yuki Kitayama"),
-        chart
+        html.H1("Yuki Kitayama")
     ]
 )
 
