@@ -8,8 +8,10 @@ COPY .env .
 
 COPY src .
 
+WORKDIR /src
+
 # COPY app.py .
 
-# CMD ["python", "app.py"]
+CMD ["python", "app.py"]
 
-CMD ["python", "./src/app.py"]
+# CMD ["python", "./src/app.py"]
