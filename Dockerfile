@@ -8,4 +8,4 @@ COPY .env .
 
 COPY src .
 
-CMD ["python", "src/app.py"]
+CMD ["python", "app.py"]
