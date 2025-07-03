@@ -1,10 +1,27 @@
-from dash import Dash, html
+import dash
+from dash import Dash, html, dcc
+import dash_bootstrap_components as dbc
 
-app = Dash()
+app = Dash(
+    __name__,
+    use_pages=True,
+    external_stylesheets=[
+        dbc.themes.FLATLY
+    ]
+)
 
-app.layout = html.Div(
+app.layout = dbc.Container(
     [
-        html.H1("Yuki Kitayama")
+        html.H1("Yuki's Dashboard"),
+        html.Div([
+            html.Div(
+                dcc.Link(
+                    f"{page['name']} - {page['path']}",
+                    href=page["relative_path"]
+                )
+            ) for page in dash.page_registry.values()
+        ]),
+        dash.page_container
     ]
 )
 
