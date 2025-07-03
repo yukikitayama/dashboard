@@ -8,7 +8,7 @@ COPY .env .
 
 COPY src .
 
-WORKDIR /src
+WORKDIR src
 
 # COPY app.py .
 
