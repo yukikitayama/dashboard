@@ -2,6 +2,5 @@
 .idea/
 __pycache__
 *.pyc
+.gitignore
 README.md
-test/
-temp/
