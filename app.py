@@ -2,12 +2,13 @@ import dash
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 
-from components.layout import title
+from src.components.layout import title
 
 # Dash setting
 app = Dash(
     __name__,
     use_pages=True,
+    pages_folder="src/pages",
     external_stylesheets=[
         dbc.themes.FLATLY
     ]
