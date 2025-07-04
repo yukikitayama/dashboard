@@ -2,6 +2,9 @@ import dash
 from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 
+from components.layout import title
+
+# Dash setting
 app = Dash(
     __name__,
     use_pages=True,
@@ -10,17 +13,10 @@ app = Dash(
     ]
 )
 
+# Dash layout
 app.layout = dbc.Container(
     [
-        html.H1("Yuki's Dashboard"),
-        html.Div([
-            html.Div(
-                dcc.Link(
-                    f"{page['name']} - {page['path']}",
-                    href=page["relative_path"]
-                )
-            ) for page in dash.page_registry.values()
-        ]),
+        dbc.Row(title),
         dash.page_container
     ]
 )

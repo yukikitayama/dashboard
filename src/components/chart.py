@@ -46,5 +46,6 @@ fig = go.Figure(
 
 chart = dcc.Graph(
     id="chart",
-    figure=fig
+    figure=fig,
+    style={"height": "70vh"}
 )
