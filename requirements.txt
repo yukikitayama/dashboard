@@ -2,6 +2,8 @@ plotly
 dash
 dash-bootstrap-components
 pandas
+pandas-gbq
+google-cloud-bigquery
 requests
 python-dotenv
 gunicorn
